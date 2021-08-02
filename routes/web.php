@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\ContentController;
+use App\Http\Controllers\ArticleController;
+use App\Models\Tag;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,12 +19,16 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome');
 //});
 
-Route::get('/', [
-    ContentController::class, 'index'
-]);
+Route::get('/', [ArticleController::class, 'index'])->name('home');
+Route::get('articles/{article:slug}', [ArticleController::class, 'show']);
+Route::get('tags/{tag:slug}', function (Tag $tag) {
+    return view('articles.index', [
+        'articles' => $tag->articles
+    ]);
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

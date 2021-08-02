@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Content extends Model
+class Article extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['category_id', 'term', 'definition'];
+//    protected $guarded = [];
+    protected $fillable = ['slug', 'term', 'excerpt', 'definition'];
 
     public function tag()
     {
-        return $this->belongsTo(Tag::class);
+        return $this->belongsToMany(Tag::class);
     }
-
 }

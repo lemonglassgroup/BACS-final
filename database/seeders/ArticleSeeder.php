@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Content;
+use App\Models\Article;
+use App\Models\Tag;
 use Illuminate\Database\Seeder;
 
-class ContentSeeder extends Seeder
+class ArticleSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +15,8 @@ class ContentSeeder extends Seeder
      */
     public function run()
     {
-        Content::factory(120)->create();
+        Article::factory(120)
+            ->has(Tag::factory()->count(rand(1,3)))
+            ->create();
     }
 }

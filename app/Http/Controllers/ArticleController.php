@@ -10,10 +10,13 @@ class ArticleController extends Controller
     public function index()
     {
         return view('articles.index', [
-            'articles' => Article::orderBy('term')
-//                ->filter(request(['tag']))
-                ->paginate(10)
-                ->withQueryString()
+            'articles' => Article::all()->sortBy('term'),
+//                ->load('tag')
+//                ->with(['term'])
+//                ->filter(request(['term']))
+//                ->paginate(10)
+//                ->withQueryString()
+            'tags' => Tag::all()
         ]);
 //        if (request('tag')){
 //            $articles = Tag::where('name', request('tag'))->firstOrFail()->articles;
@@ -29,7 +32,8 @@ class ArticleController extends Controller
     public function show(Article $article)
     {
         return view('articles.single-article', [
-            'article' => $article
+            'article' => $article,
+            'tags' => Tag::all()
         ]);
     }
 }

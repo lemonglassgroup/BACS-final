@@ -11,6 +11,7 @@ class Article extends Model
 
 //    protected $guarded = [];
     protected $fillable = ['slug', 'term', 'excerpt', 'definition'];
+    protected $with = ['tag'];
 
     public function tag()
     {

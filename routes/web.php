@@ -23,7 +23,9 @@ Route::get('/', [ArticleController::class, 'index'])->name('home');
 Route::get('articles/{article:slug}', [ArticleController::class, 'show']);
 Route::get('tags/{tag:slug}', function (Tag $tag) {
     return view('articles.index', [
-        'articles' => $tag->articles
+        'articles' => $tag->articles,
+        'currentTag' => $tag,
+        'tags' => Tag::all()
     ]);
 });
 

@@ -17,14 +17,14 @@
     </button>
 
     <div x-show="open" class="py-2 absolute bg-gray-100 z-50 overflow-auto max-h-52 w-full" style="display: none">
-        <a href="/?{{ http_build_query(request()->except('category', 'page')) }}"
+        <a href="/?{{ http_build_query(request()->except('tag', 'page')) }}"
            class="block hover:text-blue-50"
         >
             Pagrindinis
         </a>
 
         @foreach ($tags as $tag)
-            <a href="?tag={{ $tag->slug }}&{{ http_build_query(request()->except('category', 'page')) }}"
+            <a href="/?tag={{ $tag->slug }}&{{ http_build_query(request()->except('category', 'page')) }}"
                class="block hover:text-blue-50"
                 {{ isset($currentTag) && $currentTag->is($tag) ? 'bg-red-500 text-white' : 'bg-blue-500'}}
             >

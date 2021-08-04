@@ -9,7 +9,12 @@
         @foreach($article->tag as $tag)
             {{--                            https://laracasts.com/series/laravel-6-from-scratch/episodes/32 01:30--}}
 {{--            <a href="{{ route('home', ['tag' => $tag->name]) }}">{{ $tag->name }}</a>--}}
-            <a href="/tags/{{ $tag->slug }}">{{ $tag->name }}</a>
+{{--            <a href="/?{{ $tag->slug }}">{{ $tag->name }}</a>--}}
+            <a href="/?tag={{ $tag->slug }}"
+               class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold"
+               style="font-size: 10px">
+                {{ $tag->name }}
+            </a>
         @endforeach
     </p>
 

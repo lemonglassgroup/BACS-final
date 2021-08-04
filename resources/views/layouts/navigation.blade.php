@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="/">
                         <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
                     </a>
                 </div>
@@ -34,14 +34,34 @@
                     </x-slot>
 
                     <x-slot name="content">
+{{--                        <!-- Accounts -->--}}
+{{--                        <x-dropdown-link :href="route('accounts')">--}}
+{{--                            {{ __('Paskyros') }}--}}
+{{--                        </x-dropdown-link>--}}
+
+{{--                        <!-- Content -->--}}
+{{--                        <x-dropdown-link :href="route('content')">--}}
+{{--                            {{ __('Turinio valdymas') }}--}}
+{{--                        </x-dropdown-link>--}}
+
+{{--                        <!-- Newsletter -->--}}
+{{--                        <x-dropdown-link :href="route('newsletter')">--}}
+{{--                            {{ __('Naujienlaiškio nustatymai') }}--}}
+{{--                        </x-dropdown-link>--}}
+{{--                        --}}
+                        <!-- Admin Settings -->
+                        <x-dropdown-link :href="route('settings')">
+                            {{ __('Nustatymai') }}
+                        </x-dropdown-link>
+
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
-                            <x-dropdown-link :href="route('logout')"
+                            <x-dropdown-link :href="route('logout')" class="border-t-1"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('Atsijungti') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
@@ -76,6 +96,26 @@
             </div>
 
             <div class="mt-3 space-y-1">
+{{--                <!-- Accounts -->--}}
+{{--                <x-dropdown-link :href="route('accounts')">--}}
+{{--                    {{ __('Paskyros') }}--}}
+{{--                </x-dropdown-link>--}}
+
+{{--                <!-- Content -->--}}
+{{--                <x-dropdown-link :href="route('content')">--}}
+{{--                    {{ __('Turinio valdymas') }}--}}
+{{--                </x-dropdown-link>--}}
+
+{{--                <!-- Newsletter -->--}}
+{{--                <x-dropdown-link :href="route('newsletter')">--}}
+{{--                    {{ __('Naujienlaiškio nustatymai') }}--}}
+{{--                </x-dropdown-link>--}}
+
+                <!-- Admin Settings -->
+                <x-dropdown-link :href="route('settings')">
+                    {{ __('Nustatymai') }}
+                </x-dropdown-link>
+
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
@@ -83,7 +123,7 @@
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('Atsijungti') }}
                     </x-responsive-nav-link>
                 </form>
             </div>

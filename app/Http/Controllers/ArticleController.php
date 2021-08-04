@@ -9,8 +9,7 @@ class ArticleController extends Controller
     public function index()
     {
         return view('articles.index', [
-            'articles' => Article::latest()
-//                ->sortBy('term')
+            'articles' => Article::orderBy('term')
                 ->filter(request(['search', 'tag']))
                 ->paginate(6)
                 ->withQueryString()

@@ -15,6 +15,15 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('content.index')" :active="request()->routeIs('content')">
+                        {{ __('Turinio valdymas') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('newsletter')" :active="request()->routeIs('newsletter')">
+                        {{ __('Naujienlaiškio nustatymai') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('accounts')" :active="request()->routeIs('accounts')">
+                        {{ __('Redaktoriai') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -85,6 +94,15 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('content.index')" :active="request()->routeIs('content')">
+                {{ __('Turinio valdymas') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('newsletter')" :active="request()->routeIs('newsletter')">
+                {{ __('Naujienlaiškio nustatymai') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('accounts')" :active="request()->routeIs('accounts')">
+                {{ __('Redaktoriai') }}
             </x-responsive-nav-link>
         </div>
 

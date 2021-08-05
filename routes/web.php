@@ -17,9 +17,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('admin/settings', [SettingController::class, 'update'])->name('settings.update');
 
     Route::get('dashboard/content', [ContentController::class, 'index'])->name('content.index');
-    Route::get('dashboard/content', [ContentController::class, 'store'])->name('content.store');
-    Route::get('dashboard/content', [ContentController::class, 'update'])->name('content.update');
-    Route::get('dashboard/content', [ContentController::class, 'destroy'])->name('content.destroy');
+    Route::post('dashboard/content/store', [ContentController::class, 'store'])->name('content.store');
+
+    Route::get('dashboard/content/{article}/edit', [ContentController::class, 'edit'])->name('content.edit');
+    Route::put('dashboard/content/{article}', [ContentController::class, 'update'])->name('content.update');
+
+    Route::delete('dashboard/content/destroy/{article}', [ContentController::class, 'destroy'])->name('content.destroy');
+
 
     Route::view('dashboard/accounts', 'dashboard.accounts')->name('accounts');
     Route::view('dashboard/newsletter', 'dashboard.newsletter')->name('newsletter');

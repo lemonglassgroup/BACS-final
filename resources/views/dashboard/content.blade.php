@@ -17,15 +17,21 @@
                                         <thead class="bg-gray-50">
                                         <tr>
                                             <th scope="col"
-                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                class="px-6 py-3 text-left text-xs font-medium
+                                                       text-gray-500 uppercase tracking-wider"
+                                            >
                                                 Terminas
                                             </th>
                                             <th scope="col"
-                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                class="px-6 py-3 text-left text-xs font-medium
+                                                       text-gray-500 uppercase tracking-wider"
+                                            >
                                                 Apibrėžimas
                                             </th>
                                             <th scope="col"
-                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                class="px-6 py-3 text-left text-xs font-medium
+                                                       text-gray-500 uppercase tracking-wider"
+                                            >
                                                 Žymės
                                             </th>
                                             <th scope="col" class="relative px-6 py-3">
@@ -44,34 +50,38 @@
                                                         <div class="ml-4">
                                                             <div class="text-sm font-medium text-gray-900">
                                                                 {{ $article->term }}
-                                                                {{--                                                            Terminu stulpelis--}}
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td class="truncate max-w-0 px-6 py-4 whitespace-nowrap">
                                                     {{ $article->excerpt }}
-                                                    {{--                                                Apibrezimu stulpelis--}}
                                                 </td>
                                                 <td class="max-w-0 px-6 py-4 whitespace-nowrap">
                                                     @foreach($article->tag as $tag)
-                                                        <span
-                                                                class="px-2 inline-flex text-xs italic leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">
+                                                        <span class="px-2 inline-flex text-xs
+                                                                     italic leading-5 font-semibold
+                                                                     rounded-full bg-gray-100 text-gray-800"
+                                                        >
                                                             {{ $tag->name }}
                                                         </span>
                                                     @endforeach
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                    <a href="#"
+                                                    <a href="{{ route('content.edit', $article->id) }}"
                                                        class="text-indigo-600 hover:text-indigo-900">Redaguoti</a>
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                    <a href="#" class="text-red-600 hover:text-red-900">Ištrinti</a>
+                                                    {{--  <a href="" class="text-red-600 hover:text-red-900">Ištrinti</a>--}}
+                                                    <form action="{{ route('content.destroy', $article->id) }}"
+                                                          method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="">Naikinti</button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @endforeach
-
-                                        <!-- More people... -->
                                         </tbody>
                                     </table>
                                 </div>

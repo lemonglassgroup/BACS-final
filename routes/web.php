@@ -1,12 +1,16 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ArticleController::class, 'index'])->name('home');
 Route::get('articles/{article:slug}', [ArticleController::class, 'show']);
+
+Route::get('/contact', [ContactController::class, 'index']);
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', function () {

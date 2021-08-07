@@ -30,4 +30,6 @@
             <p class="text-center">Tokio įrašo nėra.</p>
         @endif
     </main>
+
+    @include('articles._footer')
 </x-layout>

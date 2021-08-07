@@ -11,6 +11,11 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     Paskyros
                 </div>
+                <div>
+                    {{--                    @if (Route::has('register'))--}}
+                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Nauja paskyra</a>
+                    {{--                    @endif--}}
+                </div>
             </div>
         </div>
     </div>

@@ -14,9 +14,30 @@ class ContentController extends Controller
         ]);
     }
 
+    public function create()
+    {
+        return view('dashboard.create');
+    }
+
     public function store()
     {
-        //
+        request()->validate([
+            'term' => 'required',
+            'slug' => 'required',
+//            TODO add tag validation
+            'excerpt' => 'required',
+            'definition' => 'required',
+        ]);
+
+        Article::create([
+            'term' => request('term'),
+            'slug' => request('slug'),
+            'excerpt' => request('excerpt'),
+            'definition' => request('definition'),
+        ]);
+
+        return redirect('dashboard/content')->with('success', 'Įrašas atnaujintas');
+//        TODO success message
     }
 
     public function edit(Article $article)
@@ -31,6 +52,7 @@ class ContentController extends Controller
     {
         request()->validate([
             'term' => 'required',
+//            TODO add tag validation
             'excerpt' => 'required',
             'definition' => 'required',
         ]);

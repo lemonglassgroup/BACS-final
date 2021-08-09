@@ -17,9 +17,12 @@ class RegisteredUserController extends Controller
      * Display the registration view.
      *
      * @return \Illuminate\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function create()
     {
+        $this->authorize('dashboard_accounts');
+
         return view('auth.register');
     }
 
@@ -43,10 +46,12 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'is_admin' => (bool)$request->isAdmin,
         ]);
 
         event(new Registered($user));
 
+//        TODO fix new account creation
         Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);

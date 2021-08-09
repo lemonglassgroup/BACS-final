@@ -24,7 +24,7 @@ class TagFactory extends Factory
     {
         return [
             'name' => $this->faker->word(),
-            'slug' => $this->faker->unique()->slug()
+            'slug' => $this->faker->unique()->slug(),
         ];
     }
 }

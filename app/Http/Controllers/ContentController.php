@@ -32,6 +32,7 @@ class ContentController extends Controller
         Article::create([
             'term' => request('term'),
             'slug' => request('slug'),
+//            TODO tag creation
             'excerpt' => request('excerpt'),
             'definition' => request('definition'),
         ]);
@@ -69,6 +70,8 @@ class ContentController extends Controller
 
     public function destroy(Article $article)
     {
+        $this->authorize('content_delete');
+
         $article->delete();
 
         return redirect('dashboard/content')->with('success', 'Įrašas pašalintas');

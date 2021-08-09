@@ -73,13 +73,14 @@
                                                        class="text-indigo-600 hover:text-indigo-900">Redaguoti</a>
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                    {{--  <a href="" class="text-red-600 hover:text-red-900">Ištrinti</a>--}}
+                                                    @can('content_delete')
                                                     <form action="{{ route('content.destroy', $article->id) }}"
                                                           method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="">Naikinti</button>
                                                     </form>
+                                                    @endcan
                                                 </td>
                                             </tr>
                                         @endforeach

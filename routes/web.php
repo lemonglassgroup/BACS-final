@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ContentController;
@@ -27,8 +28,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('dashboard/content/{article}', [ContentController::class, 'update'])->name('content.update');
     Route::delete('dashboard/content/destroy/{article}', [ContentController::class, 'destroy'])->name('content.destroy');
 
-
-    Route::view('dashboard/accounts', 'dashboard.accounts')->name('accounts');
+    Route::get('dashboard/accounts', [AccountController::class, 'index'])->name('accounts.index');
+//    Route::view('dashboard/accounts', 'dashboard.accounts')->name('accounts');
     Route::view('dashboard/newsletter', 'dashboard.newsletter')->name('newsletter');
 });
 

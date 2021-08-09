@@ -15,8 +15,8 @@ class ArticleSeeder extends Seeder
      */
     public function run()
     {
-        Article::factory(120)
-            ->has(Tag::factory()->count(rand(2,3)))
+        Article::factory(100)
+            ->has(Tag::factory()->count(rand(1,3)))
             ->create();
     }
 }

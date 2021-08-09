@@ -10,31 +10,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
-    <!-- Alpine.js -->
+{{--    TODO optimize css file--}}
+{{--    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">--}}
+<!-- Alpine.js -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <!-- MailerLite Universal -->
-    <script>
-        (function (m, a, i, l, e, r) {
-            m['MailerLiteObject'] = e;
-
-            function f() {
-                var c = {a: arguments, q: []};
-                var r = this.push(c);
-                return "number" != typeof r ? r : f.bind(c.q);
-            }
-
-            f.q = f.q || [];
-            m[e] = m[e] || f.bind(f.q);
-            m[e].q = m[e].q || f.q;
-            r = a.createElement(i);
-            var _ = a.getElementsByTagName(i)[0];
-            r.async = 1;
-            r.src = l + '?v' + (~~(new Date().getTime() / 1000000));
-            _.parentNode.insertBefore(r, _);
-        })(window, document, 'script', 'https://static.mailerlite.com/js/universal.js', 'ml');
-
-        var ml_account = ml('accounts', '3343153', 'o2h6g9d4y2', 'load');
-    </script>
 </head>
 
 <body class="antialiased">
@@ -54,7 +33,9 @@
                 <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Nustatymai</a>
             @else
                 <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Prisijungti</a>
-
+                @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Nauja paskyra</a>
+                @endif
             @endauth
         </div>
     @endif

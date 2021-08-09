@@ -19,6 +19,7 @@ class ContactController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email',
+//TODO decide for phone
 //            'phone' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'subject'=>'required',
             'message' => 'required'

@@ -7,8 +7,8 @@
                 <div class="flex-shrink-0 flex items-center">
                     <a href="/">
                         Logo #2
-{{--                        TODO add logo--}}
-{{--                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />--}}
+                        {{--                        TODO add logo--}}
+                        {{--                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />--}}
                     </a>
                 </div>
 
@@ -23,9 +23,11 @@
                     <x-nav-link :href="route('newsletter')" :active="request()->routeIs('newsletter')">
                         {{ __('Naujienlaiškio nustatymai') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('accounts')" :active="request()->routeIs('accounts')">
-                        {{ __('Redaktoriai') }}
-                    </x-nav-link>
+                    @can('dashboard_accounts')
+                        <x-nav-link :href="route('accounts.index')" :active="request()->routeIs('accounts')">
+                            {{ __('Paskyros') }}
+                        </x-nav-link>
+                    @endcan
                 </div>
             </div>
 
@@ -66,7 +68,7 @@
                             @csrf
 
                             <x-dropdown-link :href="route('logout')" class="border-t-1"
-                                    onclick="event.preventDefault();
+                                             onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 {{ __('Atsijungti') }}
                             </x-dropdown-link>
@@ -77,10 +79,14 @@
 
             <!-- Hamburger -->
             <div class="-mr-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+                <button @click="open = ! open"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex"
+                              stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M4 6h16M4 12h16M4 18h16"/>
+                        <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round"
+                              stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                     </svg>
                 </button>
             </div>
@@ -99,9 +105,11 @@
             <x-responsive-nav-link :href="route('newsletter')" :active="request()->routeIs('newsletter')">
                 {{ __('Naujienlaiškio nustatymai') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('accounts')" :active="request()->routeIs('accounts')">
-                {{ __('Redaktoriai') }}
-            </x-responsive-nav-link>
+            @can('dashboard_accounts')
+                <x-responsive-nav-link :href="route('accounts.index')" :active="request()->routeIs('accounts')">
+                    {{ __('Paskyros') }}
+                </x-responsive-nav-link>
+            @endcan
         </div>
 
         <!-- Responsive Settings Options -->
@@ -122,7 +130,7 @@
                     @csrf
 
                     <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
+                                           onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         {{ __('Atsijungti') }}
                     </x-responsive-nav-link>

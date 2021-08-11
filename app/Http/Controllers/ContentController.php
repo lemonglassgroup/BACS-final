@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
-use Illuminate\Http\Request;
+use App\Models\Tag;
 
 class ContentController extends Controller
 {
@@ -22,20 +22,29 @@ class ContentController extends Controller
     public function store()
     {
         request()->validate([
-            'term' => 'required',
-            'slug' => 'required',
-//            TODO add tag validation
-            'excerpt' => 'required',
+            'term'       => 'required',
+            'slug'       => 'required',
+            //            TODO add tag validation
+            'excerpt'    => 'required',
             'definition' => 'required',
         ]);
 
-        Article::create([
-            'term' => request('term'),
-            'slug' => request('slug'),
-//            TODO tag creation
-            'excerpt' => request('excerpt'),
+        $tag = Tag::create([
+            'name' => request('tag'),
+            'slug' => request('tag'),
+        ]);
+
+        $article = Article::create([
+            'term'       => request('term'),
+            'slug'       => request('slug'),
+            //            TODO tag creation
+            'excerpt'    => request('excerpt'),
             'definition' => request('definition'),
         ]);
+
+//        $article->save();
+        $article->tag()->attach($tag);
+
 
         return redirect('dashboard/content')->with('success', 'Įrašas atnaujintas');
 //        TODO success message
@@ -45,22 +54,22 @@ class ContentController extends Controller
     {
         return view('dashboard.edit', [
             'article' => $article,
-            'tag' => $article->tag,
+            'tag'     => $article->tag,
         ]);
     }
 
     public function update(Article $article)
     {
         request()->validate([
-            'term' => 'required',
-//            TODO add tag validation
-            'excerpt' => 'required',
+            'term'       => 'required',
+            //            TODO add tag validation
+            'excerpt'    => 'required',
             'definition' => 'required',
         ]);
 
         $article->update([
-            'term' => request('term'),
-            'excerpt' => request('excerpt'),
+            'term'       => request('term'),
+            'excerpt'    => request('excerpt'),
             'definition' => request('definition'),
         ]);
 

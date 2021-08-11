@@ -5,12 +5,11 @@
     <title>Teatro terminų žodynas</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Fonts TODO check fonts-->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- Styles -->
+    <!-- Styles TODO optimize styles package -->
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
-{{--    TODO optimize css file--}}
 {{--    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">--}}
 <!-- Alpine.js -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -33,9 +32,6 @@
                 <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Nustatymai</a>
             @else
                 <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Prisijungti</a>
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Nauja paskyra</a>
-                @endif
             @endauth
         </div>
     @endif

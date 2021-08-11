@@ -18,16 +18,16 @@
                         <div>
                             <label for="slug">Slug:</label>
                             <input type="text" id="slug" name="slug">
-                            {{-- TODO fix/remove slug usage--}}
+                            {{-- TODO decide if slug usage is usefull --}}
                         </div>
                         <div>
                             <label for="tag">Žymės:</label>
                             <input type="text" id="tag" name="tag">
-                            {{-- TODO add tag--}}
                         </div>
                         <div>
                             <label for="excerpt">Apibrėžimas (iškarpa):</label>
                             <textarea id="excerpt" name="excerpt"></textarea>
+                            {{-- TODO decide if excerpt usage is usefull --}}
                         </div>
                         <div>
                             <label for="definition">Apibrėžimas (straipsnis):</label>

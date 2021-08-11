@@ -9,8 +9,8 @@ class Tag extends Model
 {
     use HasFactory;
 
-//    protected $guarded = [];
-    protected $fillable = ['slug', 'name'];
+    protected $guarded = [];
+//    protected $fillable = ['slug', 'name'];
 
     public function articles()
     {

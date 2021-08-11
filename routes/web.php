@@ -29,7 +29,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('dashboard/content/destroy/{article}', [ContentController::class, 'destroy'])->name('content.destroy');
 
     Route::get('dashboard/accounts', [AccountController::class, 'index'])->name('accounts.index');
-//    Route::view('dashboard/accounts', 'dashboard.accounts')->name('accounts');
+    Route::get('dashboard/accounts/create', [AccountController::class, 'create'])->name('accounts.create');
+    Route::post('dashboard/accounts', [AccountController::class, 'store'])->name('accounts.store');
+
     Route::view('dashboard/newsletter', 'dashboard.newsletter')->name('newsletter');
 });
 

@@ -12,10 +12,9 @@
                     Paskyros
                 </div>
                 <div class="p-6 bg-white border-b border-gray-200">
-                    {{--                    @if (Route::has('register'))--}}
-                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Nauja paskyra</a>
-                    {{--                    @endif--}}
+                    <a href="{{ route('accounts.create') }}" class="ml-4 text-sm text-gray-700 underline">Nauja paskyra</a>
                 </div>
+{{--                TODO accounts list--}}
             </div>
         </div>
     </div>

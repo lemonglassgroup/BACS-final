@@ -52,8 +52,8 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
 //        TODO fix new account creation
-        Auth::login($user);
-
-        return redirect(RouteServiceProvider::HOME);
+//        Auth::login($user);
+//
+//        return redirect(RouteServiceProvider::HOME);
     }
 }
